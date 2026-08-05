@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once __DIR__ . '/session-boot.php';
 header('Content-Type: application/json; charset=utf-8');
 ini_set('display_errors', 0);
 include 'conn.php';
@@ -47,6 +47,7 @@ if (password_verify($password, $user['password'])) {
     echo json_encode([
         "success" => true,
         "message" => "Login successful",
+        "session_token" => session_id(),
         "user" => [
             "id" => (int) $user['id'],
             "name" => $user['name'],

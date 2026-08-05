@@ -1,8 +1,8 @@
 <?php
-// Shared auth helpers. session_start() must be called BEFORE this file is
+// Shared auth helpers. The app session must be started BEFORE this file is
 // included (and before any output), so every endpoint that uses this does:
 //
-//   session_start();
+//   require_once __DIR__ . '/session-boot.php';
 //   include 'conn.php';
 //   include 'auth.php';
 

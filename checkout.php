@@ -10,7 +10,7 @@
 // process real payment. No card details are collected or stored server
 // side. Do not point real card numbers at this endpoint.
 
-session_start();
+require_once __DIR__ . '/session-boot.php';
 header('Content-Type: application/json; charset=utf-8');
 
 include 'conn.php';

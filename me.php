@@ -4,7 +4,7 @@
 // This endpoint only ever returns the currently logged-in user's own
 // record, based on their session — never someone else's.
 
-session_start();
+require_once __DIR__ . '/session-boot.php';
 header('Content-Type: application/json; charset=utf-8');
 
 include 'conn.php';

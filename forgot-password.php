@@ -11,7 +11,7 @@
 // way the original fake version showed it on-screen. In a real deployment
 // you would email this code instead of returning it to the browser.
 
-session_start();
+require_once __DIR__ . '/session-boot.php';
 header('Content-Type: application/json; charset=utf-8');
 
 include 'conn.php';
