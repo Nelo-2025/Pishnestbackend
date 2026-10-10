@@ -1,0 +1,4 @@
+conn.local.php
+secrets.local.php
+storage/impact/*
+!storage/impact/.htaccess

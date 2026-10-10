@@ -54,7 +54,7 @@ $saveForLater      = !empty($input['save_to_return']) || !empty($input['save-to-
 
 // Status: honour an explicit status if one was sent, otherwise derive it
 // from the "save to return later" checkbox. Never trust an arbitrary
-// client-supplied status string — restrict to the real enum values.
+// client-supplied status string - restrict to the real enum values.
 $requestedStatus = trim((string)($input['status'] ?? ''));
 $allowed_statuses = ['draft', 'published', 'cancelled'];
 $status = in_array($requestedStatus, $allowed_statuses, true)
@@ -117,7 +117,7 @@ if (!empty($errors)) {
 }
 
 // ---------- Insert event ----------
-// events.id is AUTO_INCREMENT in the cleaned schema — no manual id
+// events.id is AUTO_INCREMENT in the cleaned schema - no manual id
 // generation needed (the old MAX(id)+1 approach had a race condition and
 // the table didn't even have a primary key before).
 $stmt = $connect->prepare(
@@ -145,7 +145,7 @@ $eventUrl = 'event.php?id=' . urlencode((string)$event_id);
 // ---------- Optional: ticket types sent alongside the event ----------
 // Expects input['ticket_types'] as a JSON string like:
 //   [{"name":"General Admission","price":0,"quantity_available":100}, ...]
-// This is optional — an event can be created with no ticket types yet and
+// This is optional - an event can be created with no ticket types yet and
 // they can be added later via a dedicated ticket-types endpoint.
 $ticketTypesRaw = $input['ticket_types'] ?? null;
 if ($ticketTypesRaw) {

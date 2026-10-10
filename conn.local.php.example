@@ -1,0 +1,8 @@
+<?php
+// Copy to conn.local.php on your server and fill in Hostinger MySQL details.
+// conn.local.php is not committed - keep real passwords out of git.
+
+$servername = 'localhost';
+$username = 'YOUR_DB_USER';
+$password = 'YOUR_DB_PASSWORD';
+$dbname = 'YOUR_DB_NAME';

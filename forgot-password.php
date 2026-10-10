@@ -1,6 +1,6 @@
 <?php
 // Replaces the old forgot-password.js flow, which read/wrote a
-// 'nearby_users' key in localStorage — completely disconnected from the
+// 'nearby_users' key in localStorage - completely disconnected from the
 // real MySQL `users` table, so it could never actually find a real account
 // or update a real password. This version is backed by the database, via
 // a password_resets table that stores a hashed 6-digit code with an

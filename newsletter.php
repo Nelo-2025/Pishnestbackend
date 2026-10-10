@@ -1,5 +1,5 @@
 <?php
-// Was completely missing before — dashboard.js was faking a success message
+// Was completely missing before - dashboard.js was faking a success message
 // even when this request failed, which would have misled real users into
 // thinking they'd subscribed when nothing was saved anywhere.
 
@@ -21,7 +21,7 @@ if (!$email) {
     exit;
 }
 
-// INSERT IGNORE so subscribing twice with the same email doesn't error —
+// INSERT IGNORE so subscribing twice with the same email doesn't error -
 // it just silently stays subscribed once.
 $stmt = $connect->prepare("INSERT IGNORE INTO newsletter_subscribers (email) VALUES (?)");
 $stmt->bind_param("s", $email);
