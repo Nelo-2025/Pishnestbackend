@@ -24,7 +24,7 @@ $canSeeOwnEvents = isLoggedIn() && canManageEvents();
 $currentUserId = $canSeeOwnEvents ? currentUserId() : 0;
 
 // NOTE: organiser_name and organiser_id are included below specifically so
-// the dashboard can filter "my events" correctly — the previous version of
+// the dashboard can filter "my events" correctly - the previous version of
 // this file omitted them, which meant that filter always silently matched
 // zero events even for organisers who *had* created events.
 $sql = "SELECT e.id, e.title, e.venue, e.start_datetime, e.status,

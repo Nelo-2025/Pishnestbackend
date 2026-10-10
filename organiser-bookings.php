@@ -68,6 +68,15 @@ if ($event_id) {
     $bookingTypes .= 'i';
 }
 
+$hasGuestColumns = dbHasColumn($connect, 'orders', 'guest_name')
+    && dbHasColumn($connect, 'orders', 'guest_email');
+$attendeeNameExpr = $hasGuestColumns
+    ? "COALESCE(u.name, o.guest_name, 'Guest')"
+    : "COALESCE(u.name, 'Guest')";
+$attendeeEmailExpr = $hasGuestColumns
+    ? "COALESCE(u.email, o.guest_email, '')"
+    : "COALESCE(u.email, '')";
+
 $bookingsSql = "SELECT
                   o.id AS order_id,
                   o.event_id,
@@ -78,13 +87,13 @@ $bookingsSql = "SELECT
                   o.total_amount,
                   o.created_at,
                   u.id AS attendee_id,
-                  u.name AS attendee_name,
-                  u.email AS attendee_email,
+                  {$attendeeNameExpr} AS attendee_name,
+                  {$attendeeEmailExpr} AS attendee_email,
                   COALESCE(SUM(oi.quantity), 0) AS tickets_count,
                   GROUP_CONCAT(CONCAT(tt.name, ' x', oi.quantity) ORDER BY tt.price ASC SEPARATOR ', ') AS ticket_summary
                 FROM orders o
                 INNER JOIN events e ON e.id = o.event_id
-                INNER JOIN users u ON u.id = o.user_id
+                LEFT JOIN users u ON u.id = o.user_id
                 LEFT JOIN order_items oi ON oi.order_id = o.id
                 LEFT JOIN ticket_types tt ON tt.id = oi.ticket_type_id
                 WHERE " . implode(' AND ', $bookingsWhere) . "

@@ -2,7 +2,7 @@
 // Starts the PHP session with cookie params that work for cross-origin
 // frontends (e.g. Live Server on http://127.0.0.1:5500 talking to this
 // HTTPS API). Without SameSite=None; Secure, browsers refuse to store or
-// send the session cookie on credentialed cross-site fetch() calls — so
+// send the session cookie on credentialed cross-site fetch() calls - so
 // login appears to succeed once, then every later page looks logged out.
 //
 // Also accepts a Bearer / X-Session-Id token (returned by login.php) so

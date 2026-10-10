@@ -2,7 +2,7 @@
 // Replaces the old get-user.php, which let anyone look up ANY user's name
 // and role just by knowing their email address (no auth check at all).
 // This endpoint only ever returns the currently logged-in user's own
-// record, based on their session — never someone else's.
+// record, based on their session - never someone else's.
 
 require_once __DIR__ . '/session-boot.php';
 header('Content-Type: application/json; charset=utf-8');
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 }
 
 if (!isLoggedIn()) {
-    // Not an error — this is the normal "am I logged in?" check the
+    // Not an error - this is the normal "am I logged in?" check the
     // frontend can call on page load. Just say no.
     echo json_encode(["success" => false, "message" => "Not logged in"]);
     exit;

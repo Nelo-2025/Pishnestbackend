@@ -103,7 +103,7 @@ if (!empty($errors)) {
 }
 
 // Ownership is checked first (separately) so we can return a clear,
-// distinct error instead of a generic "not found" — this endpoint is only
+// distinct error instead of a generic "not found" - this endpoint is only
 // ever called by the organiser's own edit form, so a clearer message here
 // doesn't leak anything sensitive to a stranger.
 $checkStmt = $connect->prepare("SELECT organiser_id FROM events WHERE id = ?");
